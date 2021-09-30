@@ -12,8 +12,8 @@ SRC/Main.cpp
 
 
 
-如图：
+如图：![屏幕截图 2021-09-30 154558](C:\Users\皮卡丘\Desktop\屏幕截图 2021-09-30 154558.jpg)
 
---![image-20210930154227226](C:\Users\皮卡丘\AppData\Roaming\Typora\typora-user-images\image-20210930154227226.png)
+
 
 请在相应编译器导入时注意文件结构
