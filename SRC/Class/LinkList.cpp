@@ -1,6 +1,7 @@
 #include "LinkList.h"
 #include "Log.h"
 #include <iostream>
+#include <iomanip>
 #define NULL 0
 #define Cout std::cout
 #define Cin  std::cin
@@ -56,11 +57,16 @@ void LinkList::Output()
         Log::Warn("The list in the Output function is empty!");
     }
 
+    Cout << "剩余的生者位置是: \n";
+    int count = 0;
     while (current != m_head)
     {
-        Cout << current->m_pos;
+        Cout << std::setw(5) << current->m_pos;
+        if (0 == (count + 1) % 5) { Cout << '\n'; }
         current = current->m_next;
+        count++;
     }
+    Cout << '\n';
 }
 
 Passenger* LinkList::Locate(int i)

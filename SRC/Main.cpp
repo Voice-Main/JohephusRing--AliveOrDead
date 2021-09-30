@@ -1,10 +1,6 @@
 #include <iostream>
-
-const int deadTag = 1;
-//const int peopleNum = 30;
-//const int deadNum = 9;
-//const int circleNum = 15;
 #include "Class/LinkList.h"
+#include <iomanip>
 
 #define  Cout std::cout
 #define  Cin std::cin
@@ -41,7 +37,11 @@ int main()
 			{
 				Passenger* keepData = current->m_next;
 				linkList.Remove(current, temp);
-				Cout << "第" << i + 1 << "个死者位置是：        " << temp.m_pos << std::endl;
+
+				Cout << "第" << std::setw(3) << std::setfill(' ') << 
+					std::setiosflags(std::ios::left) << i + 1 
+					<< "个死者位置是:" << std::setw(4) << temp.m_pos << std::endl;
+
 				i++;//when a people die, you can actually go on the next circle
 				count = 1;//start with number one
 				current = keepData;
@@ -54,8 +54,10 @@ int main()
 			}
 			count++;
 		}
+		Cout << "最后剩下" << aliveNum << "人\n";
+		linkList.Output();
 
-		Cout << "是否退出？（Y/y)--Yes\n";
+		Cout << "是否退出？（Y/y)--Yes, (N/n)--No\n";
 		char ifExit;
 		Cin >> ifExit;
 		if (ifExit == 'y' || ifExit == 'Y')
@@ -63,79 +65,7 @@ int main()
 			break;
 		}
 	}
-	
 
-	//2.0
-	//for (int i = 0; i < circleNum; )
-	//{
-	//	if (pos > MaxPeopleNum)
-	//	{
-	//		pos = 1;//return to the first people
-	//	}
-	//	if (count == deadNum )
-	//	{
-
-	//		linkList.Remove(pos, temp);//you removed many people, so the length of the linked list has been changed, however, the pos is not been changed, so the error occurred
-	//		std::cout << "第" << i + 1 << "个死者位置是：        " << temp.m_pos << std::endl;
-	//		i++;//when a people die, you can actually go on the next circle
-	//		count = 1;//start with number one
-	//		pos++;//go to the next people
-	//		MaxPeopleNum--;
-
-	//		if (!MaxPeopleNum) {
-	//			Cout << "ERROR: maxPeopleNum is wrong and its value is " << MaxPeopleNum << '\n';
-	//		}
-	//		continue;
-	//	}
-	//	count++;
-	//	pos++;
-	//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//1.0
-	//int people[peopleNum+1] = {};//initialize the array with zero
-	//int pos = 1;//begin with the first people
-	//int count = 1;//begin with the number one
-
- // 	for (int i = 0; i < circleNum; ) 
-	//{
-	//	if (pos > peopleNum)
-	//	{
-	//		pos = 1;//return to the first people
-	//	}
-	//	while (people[pos] == deadTag)
-	//		//you must use a circle to keep it normal when people are dead continuously
-	//	{
-	//		pos++;//ignore the dead people
-	//		if (pos > peopleNum)
-	//		{
-	//			pos = 1;
-	//		}
-	//	}
-	//	if (count == deadNum && people[pos] != deadTag)
-	//	{
-	//		people[pos] = deadTag;
-	//		std::cout << "第" << i + 1 << "个死者位置		" << pos << std::endl;
-	//		i++;//when a people die, you can actually go on the next circle
-	//		count = 1;//start with number one
-	//		pos++;//go to the next people
-
-	//		continue;
-	//	}
-	//	count++;
-	//	pos++;		
-	//}
 }
 
 void Input(int& peopleNum, int& initPos, int& deadNum, int& aliveNum)
